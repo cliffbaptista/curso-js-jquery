@@ -1,0 +1,25 @@
+<button id="carregar">Carregar Dados</button>
+<div id="dados"></div>
+
+<script src="js/jquery.js"></script>
+
+<script>
+    $(document).ready(function () {
+        $('#carregar').click( function () {
+            $.ajax({
+                url: 'http://localhost/semana05/aula05/js/dados.json',
+                type: 'GET',
+                dataType: 'json',
+                success: function (data) {
+                    $('#dados').append('<strong>Nome: </strong>' + data.nome + '<br>');
+                    $('#dados').append('<strong>Email: </strong>' + data.email + '<br>');
+                    $('#dados').append('<strong>Telefone: </strong>' + data.telefone);
+                },
+                error: function () {
+                    alert('Deu error');
+                }
+
+            });
+        });
+    });
+</script>
